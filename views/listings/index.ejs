@@ -1,0 +1,100 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container py-5" style="padding-top: 120px; padding-bottom: 100px">
+  <!-- Header with Host Actions -->
+  <div class="row mb-5 align-items-center">
+    <div class="col">
+      <h3 class="fw-bold text-dark mb-0" style="font-size: 2.2rem">
+        All Listings
+      </h3>
+      <p class="text-muted mb-0" style="font-size: 1.1rem">
+        <%= allListings.length %> stays available
+      </p>
+    </div>
+
+    <!-- Listings Grid -->
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4">
+      <% for (let listing of allListings) { %>
+      <div class="col">
+        <a
+          href="/listings/<%= listing._id %>"
+          class="listing-link text-decoration-none"
+        >
+          <div
+            class="card h-100 listing-card shadow-sm border-0 rounded-3 overflow-hidden transition-all"
+          >
+            <div class="position-relative overflow-hidden">
+              <img
+                src="<%= listing.image %>"
+                class="card-img-top w-100"
+                alt="<%= listing.title %>"
+                style="
+                  height: 220px;
+                  object-fit: cover;
+                  transition: transform 0.4s ease;
+                "
+              />
+
+              <% if(currUser && listing.owner &&
+              currUser._id.equals(listing.owner._id)) { %>
+              <div
+                class="position-absolute top-3 end-3 badge rounded-pill bg-danger bg-opacity-90 px-3 py-2 shadow fw-semibold"
+              >
+                <i class="fas fa-crown me-1"></i>Yours
+              </div>
+              <% } %>
+            </div>
+
+            <div class="card-body p-4 d-flex flex-column">
+              <h5 class="card-title fw-bold text-dark mb-2">
+                <%= listing.title %>
+              </h5>
+
+              <p class="card-text text-muted small mb-3 flex-grow-1">
+                <%= listing.location %>, <%= listing.country %>
+              </p>
+
+              <div class="d-flex justify-content-between align-items-end">
+                <div>
+                  <div class="h5 fw-bold text-danger mb-1">
+                    ₹<%= listing.price.toLocaleString("en-IN") %>
+                  </div>
+                  <small class="text-muted">per night</small>
+                </div>
+
+                <span
+                  class="badge bg-light text-dark px-2 py-1 rounded-pill small fw-semibold"
+                >
+                  <i class="fas fa-bed me-1"></i>View
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <% } %>
+    </div>
+
+    <!-- Empty State -->
+    <% if(allListings.length === 0) { %>
+    <div class="row justify-content-center text-center py-5 my-5">
+      <div class="col-md-8">
+        <div class="bg-light rounded-4 p-5 shadow-lg">
+          <i class="fas fa-search display-3 text-muted opacity-50 mb-4"></i>
+          <h3 class="fw-bold text-muted mb-3">No listings found</h3>
+
+          <% if(currUser && currUser.role === "host") { %>
+          <p class="lead text-muted mb-4">Be the first to create a listing!</p>
+          <a
+            href="/listings/new"
+            class="btn btn-danger btn-lg px-5 py-3 fw-bold shadow-xl rounded-pill"
+          >
+            <i class="fas fa-plus-circle me-2"></i>Create Listing
+          </a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+in user model changed
+this is ab tak ka latest project
+Sure Vaishnavi 😄✨ — **very short & crisp**:
+
+---
+
+### 📁 `models/booking.js`
+
+👉 Stores booking data (user + listing)
+
+---
+
+### 📁 `routes/booking.js`
+
+👉 Handles booking & cancel booking (POST + DELETE)
+
+---
+
+### 🖥️ `show.ejs` (updated)
+
+👉 Added **Book Now button**
+
+---
+
+### 🖥️ `dashboard.js` (updated)
+
+👉 Shows:
+
+- Host → their listings
+- User → their bookings
+
+---
+
+### 🖥️ `dashboard.ejs` (updated)
+
+👉 UI for dashboard + **Cancel Booking button**
+
+---
+
+### ⚙️ `app.js` (updated)
+
+👉 Connected booking routes to app

@@ -1,0 +1,145 @@
+<!-- views/includes/navbar.ejs -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-lg fixed-top">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand fw-bold fs-2 p-2 rounded-4" href="/">
+      <i class="fas fa-compass text-danger me-2"></i>
+      <span class="text-dark">Wander</span><span class="text-danger">bnb</span>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarContent"
+    >
+      <i class="fas fa-bars text-danger"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <!-- LEFT LINKS -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/">🏠 Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/listings">🏨 All Stays</a>
+        </li>
+
+        <% if(currUser && currUser.role === "host") { %>
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/listings/new">
+            ➕ Create Listing
+          </a>
+        </li>
+        <% } %>
+      </ul>
+
+      <!-- RIGHT AUTH SECTION -->
+
+      <% if(!currUser) { %>
+      <!-- Guest -->
+      <div class="d-flex gap-2">
+        <a
+          href="/signup"
+          class="btn btn-outline-danger fw-semibold rounded-pill px-4"
+        >
+          <i class="fas fa-user-plus me-1"></i>Sign Up
+        </a>
+
+        <a href="/login" class="btn btn-danger fw-semibold rounded-pill px-4">
+          <i class="fas fa-sign-in-alt me-1"></i>Login
+        </a>
+      </div>
+
+      <% } else { %>
+
+      <!-- Logged In User Dropdown -->
+      <div class="dropdown">
+        <a
+          class="dropdown-toggle d-flex align-items-center p-2 rounded-pill text-decoration-none"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+        >
+          <!-- Avatar -->
+          <div
+            class="bg-danger text-white rounded-circle d-flex align-items-center justify-content-center me-2 fw-bold"
+            style="width: 40px; height: 40px"
+          >
+            <%= currUser.username.charAt(0).toUpperCase() %>
+          </div>
+
+          <!-- Name + Role -->
+          <div class="me-2">
+            <div class="fw-bold small"><%= currUser.username %></div>
+
+            <% if(currUser.role === "host") { %>
+            <span class="badge bg-success small">Host</span>
+            <% } else { %>
+            <span class="badge bg-secondary small">User</span>
+            <% } %>
+          </div>
+        </a>
+
+        <!-- Dropdown Menu -->
+        <ul
+          class="dropdown-menu dropdown-menu-end shadow border-0 mt-2"
+          style="border-radius: 15px; min-width: 250px"
+        >
+          <!-- User Info -->
+          <li class="px-4 py-3 border-bottom">
+            <strong><%= currUser.username %></strong><br />
+            <small class="text-muted">
+              <%= currUser.role === "host" ? "Host Dashboard" : "User Dashboard"
+              %>
+            </small>
+          </li>
+
+          <% if(currUser.role === "host") { %>
+
+          <li>
+            <a class="dropdown-item px-4 py-3" href="/dashboard">
+              📊 Dashboard
+            </a>
+          </li>
+
+          <li>
+            <a class="dropdown-item px-4 py-3" href="/listings/new">
+              ➕ Create Listing
+            </a>
+          </li>
+
+          <% } else { %>
+
+          <li>
+            <a class="dropdown-item px-4 py-3" href="/dashboard">
+              📅 My Bookings
+            </a>
+          </li>
+
+          <% } %>
+
+          <li><hr class="dropdown-divider" /></li>
+
+          <!-- Logout -->
+          <li>
+            <a
+              class="dropdown-item text-danger fw-bold px-4 py-3"
+              href="/logout"
+            >
+              🚪 Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <% } %>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer for fixed navbar -->
+<div style="height: 85px"></div>

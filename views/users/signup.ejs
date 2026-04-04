@@ -1,0 +1,98 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-3" style="padding-top: 100px; padding-bottom: 150px">
+  <h1
+    class="col-6 offset-3 text-center mb-4 fw-bold"
+    style="color: #2c3e50; font-size: 2.2rem"
+  >
+    SignUp on Wanderbnb
+  </h1>
+
+  <div class="col-6 offset-3">
+    <form action="/signup" method="post" class="needs-validation" novalidate>
+      <!-- Username -->
+      <div class="mb-3">
+        <label for="username" class="form-label fw-semibold text-dark mb-2">
+          <i class="fas fa-user me-1 text-danger"></i>Username
+        </label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          class="form-control form-control-lg shadow-sm border-danger-subtle signup-input"
+          placeholder="Enter your username"
+          required
+        />
+        <div class="invalid-feedback mt-1">Please choose a username.</div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label fw-semibold text-dark mb-2">
+          <i class="fas fa-envelope me-1 text-danger"></i>E-mail
+        </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="form-control form-control-lg shadow-sm border-danger-subtle signup-input"
+          placeholder="your@email.com"
+          required
+        />
+        <div class="invalid-feedback mt-1">Please provide a valid email.</div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold text-dark mb-2">
+          <i class="fas fa-lock me-1 text-danger"></i>Password
+        </label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="form-control form-control-lg shadow-sm border-danger-subtle signup-input"
+          placeholder="Create a strong password"
+          required
+        />
+        <div class="invalid-feedback mt-1">Password is required.</div>
+      </div>
+
+      <!-- ROLE SELECTION (NEW) -->
+      <div class="mb-4">
+        <label class="form-label fw-semibold text-dark mb-2">
+          <i class="fas fa-user-tag me-1 text-danger"></i>Register As
+        </label>
+        <select
+          name="role"
+          class="form-select form-select-lg shadow-sm border-danger-subtle"
+          required
+        >
+          <option value="user" selected>User</option>
+          <option value="host">Host</option>
+        </select>
+        <div class="invalid-feedback mt-1">Please select a role.</div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="mb-4">
+        <button
+          type="submit"
+          class="btn btn-danger w-100 py-3 fw-bold rounded-pill shadow-lg signup-btn"
+        >
+          <i class="fas fa-user-plus me-2"></i>Sign up
+        </button>
+      </div>
+
+      <!-- Login Link -->
+      <div class="text-center pb-3">
+        <p class="text-muted mb-0 small">
+          Already have an account?
+          <a href="/login" class="text-danger fw-semibold text-decoration-none">
+            Sign in here
+          </a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

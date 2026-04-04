@@ -1,0 +1,121 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container py-5">
+  <!-- HEADER -->
+  <div class="text-center mb-5">
+    <div class="bg-light p-4 rounded-4 shadow-sm">
+      <h1 class="fw-bold">Welcome, <%= currUser.username %> 👋</h1>
+
+      <% if(currUser.role === "host"){ %>
+      <p class="text-success fw-semibold">👑 Host Dashboard</p>
+      <a href="/listings/new" class="btn btn-danger rounded-pill px-4">
+        ➕ Create Listing
+      </a>
+      <% } else { %>
+      <p class="text-primary fw-semibold">🧳 My Bookings</p>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- ================= HOST ================= -->
+  <% if(currUser.role === "host"){ %>
+
+  <h3 class="fw-bold mb-4">Your Listings (<%= listings.length %>)</h3>
+
+  <div class="row g-4">
+    <% listings.forEach(listing => { %>
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-lg border-0 rounded-4 h-100">
+        <img
+          src="<%= listing.image %>"
+          class="card-img-top"
+          style="height: 200px; object-fit: cover"
+        />
+
+        <div class="card-body">
+          <h5 class="fw-bold"><%= listing.title %></h5>
+
+          <p class="text-muted small">
+            <%= listing.location %>, <%= listing.country %>
+          </p>
+
+          <div class="d-flex justify-content-between mb-3">
+            <span class="text-danger fw-bold">
+              ₹<%= listing.price.toLocaleString("en-IN") %>
+            </span>
+
+            <span class="badge bg-info">
+              <%= listing.reviews.length %> reviews
+            </span>
+          </div>
+
+          <a
+            href="/listings/<%= listing._id %>"
+            class="btn btn-outline-primary btn-sm"
+          >
+            View
+          </a>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+
+  <% } %>
+
+  <!-- ================= USER BOOKINGS ================= -->
+  <% if(currUser.role === "user"){ %>
+
+  <h3 class="fw-bold mb-4">My Bookings (<%= listings.length %>)</h3>
+
+  <div class="row g-4">
+    <% listings.forEach(b => { %>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-lg border-0 rounded-4 h-100">
+        <img
+          src="<%= b.listing.image %>"
+          class="card-img-top"
+          style="height: 200px; object-fit: cover"
+        />
+
+        <div class="card-body">
+          <h5 class="fw-bold"><%= b.listing.title %></h5>
+
+          <p class="text-muted small">
+            <%= b.listing.location %>, <%= b.listing.country %>
+          </p>
+
+          <div class="text-danger fw-bold mb-2">
+            ₹<%= b.listing.price.toLocaleString("en-IN") %> /night
+          </div>
+
+          <!-- ACTION BUTTONS -->
+          <div class="d-flex gap-2">
+            <!-- VIEW -->
+            <a
+              href="/listings/<%= b.listing._id %>"
+              class="btn btn-outline-primary btn-sm rounded-pill px-3"
+            >
+              View
+            </a>
+
+            <!-- ❌ CANCEL BOOKING -->
+            <form method="POST" action="/bookings/<%= b._id %>?_method=DELETE">
+              <button
+                class="btn btn-outline-danger btn-sm rounded-pill px-3"
+                onclick="return confirm('Cancel this booking?')"
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% }) %>
+  </div>
+
+  <% } %>
+</div>

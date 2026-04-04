@@ -1,0 +1,249 @@
+/* public/css/style.css - ENHANCED LAPTOP 100% VIEWPORT VERSION */
+
+/* Import Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+/* Global Styles - FIXED FOR LAPTOP VIEWPORT */
+* {
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #f8f9ff 0%, #e0e7ff 100%);
+  min-height: 100vh;
+  padding-top: 80px; /* FIXED: Navbar overlap solution for fixed-top */
+}
+
+/* Main content wrapper */
+.main-content {
+  min-height: calc(100vh - 80px - 300px); /* Adjust for navbar + footer */
+  padding-bottom: 2rem;
+}
+
+/* Navbar Perfect Laptop Fix */
+.navbar {
+  height: 75px !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
+  padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px;
+}
+
+.fa-compass {
+  color: #fe424d !important;
+}
+
+.nav-link {
+  color: #333 !important;
+  font-weight: 500 !important;
+  padding: 0.75rem 1.25rem !important;
+  border-radius: 12px;
+  margin: 0 0.25rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #fe424d !important;
+  background: rgba(254, 66, 77, 0.08) !important;
+  transform: translateY(-1px);
+}
+
+/* FIXED: Button hover text visibility */
+.btn-outline-danger {
+  border: 2px solid #fe424d !important;
+  color: #fe424d !important;
+  background: transparent !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 2rem !important;
+  border-radius: 50px !important;
+  letter-spacing: 0.5px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  text-decoration: none !important;
+  position: relative;
+  overflow: visible;
+}
+
+.btn-outline-danger:hover {
+  background: linear-gradient(45deg, #fe424d, #ff5a6a) !important;
+  color: white !important;
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 12px 35px rgba(254, 66, 77, 0.4) !important;
+  border-color: transparent !important;
+}
+
+.btn-danger {
+  background: linear-gradient(45deg, #fe424d, #ff5a6a) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 0.75rem 2rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 25px rgba(254, 66, 77, 0.4) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-danger:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 15px 40px rgba(254, 66, 77, 0.5) !important;
+}
+
+/* Premium Cards */
+.listing-card {
+  border: none !important;
+  border-radius: 24px !important;
+  overflow: hidden;
+  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: white;
+}
+
+.listing-card:hover {
+  transform: translateY(-15px) scale(1.025) !important;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.18) !important;
+}
+
+.card-img-top {
+  height: 250px !important;
+  object-fit: cover !important;
+  transition: transform 0.5s ease;
+}
+
+.listing-card:hover .card-img-top {
+  transform: scale(1.08);
+}
+
+/* Show Page Hero */
+.show-card {
+  border-radius: 32px !important;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.15) !important;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.show-img {
+  height: 500px !important;
+  object-fit: cover !important;
+}
+
+/* Forms Enhancement */
+.form-control:focus {
+  border-color: #fe424d !important;
+  box-shadow: 0 0 0 0.25rem rgba(254, 66, 77, 0.2) !important;
+  transform: scale(1.02);
+}
+
+/* Alerts */
+.alert {
+  border-radius: 20px !important;
+  border: none !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.alert-success {
+  background: linear-gradient(135deg, #56ab2f, #a8e6cf) !important;
+  color: white !important;
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #fe424d, #ff5a6a) !important;
+  color: white !important;
+}
+
+/* Review Cards */
+.card.col-md-5 {
+  border-radius: 24px !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Footer Responsive */
+footer {
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Laptop 100% Viewport Responsive */
+@media (max-width: 1400px) {
+  .container,
+  .container-fluid {
+    max-width: 100% !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  body {
+    padding-top: 70px;
+  }
+  .navbar {
+    height: 70px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 65px;
+  }
+  .show-img {
+    height: 320px !important;
+  }
+  .listing-card {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+/* Premium Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.listing-card,
+.show-card {
+  animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #fe424d, #ff5a6a);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #ff5a6a, #fe424d);
+}
+
+/* Dropdown Hover FIXED */
+.dropdown:hover .dropdown-menu {
+  display: block !important;
+  animation: fadeInUp 0.3s ease;
+}
