@@ -63,7 +63,68 @@
     </div>
   </div>
 
+  <style>
+    .host-btn {
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .host-btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+      filter: brightness(1.1);
+    }
+  </style>
+
+  <!-- HOST ACTIONS -->
+  <% if(currUser && listing.owner && currUser._id.equals(listing.owner._id)) {
+  %>
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card border-0 shadow-lg rounded-4 p-4 text-center">
+        <h5 class="fw-bold mb-4">Host Controls</h5>
+
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+          <a
+            href="/listings/<%= listing._id %>/edit"
+            class="btn host-btn btn-lg px-4 py-3 fw-bold rounded-pill text-white d-flex align-items-center justify-content-center gap-2"
+            style="
+              background: linear-gradient(135deg, #fbbf24, #f97316);
+              min-width: 180px;
+            "
+          >
+            <i class="fas fa-pen"></i>
+            Edit
+          </a>
+
+          <form
+            method="POST"
+            action="/listings/<%= listing._id %>?_method=DELETE"
+          >
+            <button
+              class="btn host-btn btn-lg px-4 py-3 fw-bold rounded-pill text-white d-flex align-items-center justify-content-center gap-2"
+              style="
+                background: linear-gradient(135deg, #ef4444, #b91c1c);
+                min-width: 180px;
+              "
+              onclick="return confirm('⚠️ Delete this listing permanently?')"
+            >
+              <i class="fas fa-trash"></i>
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% } %>
+
   <!-- ================= REVIEW SECTION ================= -->
+  <% if(!currUser || !listing.owner || !currUser._id.equals(listing.owner._id))
+  { %>
+
   <div class="row justify-content-center mb-5">
     <div class="col-12 col-lg-8">
       <div class="card shadow-sm p-4 rounded-4">
@@ -108,6 +169,8 @@
       </div>
     </div>
   </div>
+
+  <% } %>
 
   <!-- ================= ALL REVIEWS ================= -->
   <div class="row justify-content-center">

@@ -40,3 +40,209 @@ Sure Vaishnavi 😄✨ — **very short & crisp**:
 ### ⚙️ `app.js` (updated)
 
 👉 Connected booking routes to app
+
+part-d(phase-2)
+############################authentication v/s authorization
+Here’s a **clear, brief, exam-perfect explanation** 👌
+(No extra drama, easy to remember.)
+
+---
+
+## 🔐 Authentication
+
+**Authentication** is the process of **verifying who the user is**.
+
+👉 It answers: **“Who are you?”**
+
+**Example:**
+
+- User enters **email & password**
+- System checks credentials
+- If correct → user is logged in
+
+📌 _Login process = Authentication_
+
+---
+
+## 🛂 Authorization
+
+**Authorization** is the process of **deciding what the user is allowed to do**.
+
+👉 It answers: **“What can you do?”**
+
+**Example:**
+
+- User can **book property**
+- Host can **add property**
+- User cannot add property
+
+📌 _Access control after login = Authorization_
+
+---
+
+## 🔁 Simple Difference Table
+
+| Authentication    | Authorization                |
+| ----------------- | ---------------------------- |
+| Verifies identity | Verifies permissions         |
+| Happens first     | Happens after authentication |
+| Login process     | Role-based access            |
+| “Who are you?”    | “What can you do?”           |
+
+---
+
+## ✍️ One-line Viva Answer (Very Safe)
+
+- **Authentication** checks the user’s identity.
+- **Authorization** controls the user’s access rights.
+
+---
+
+## 🧠 Easy way to remember
+
+> **Authen-tication = ID check** > **Author-ization = Permission check**
+
+##################################how are passwords stored>
+#################################what is hashing?
+###################################what is salting?
+
+## 🔐 How are passwords stored?
+
+Passwords are **NOT stored in plain text**.
+They are stored in an **encrypted (hashed) form** for security.
+
+---
+
+## 🧠 Correct Process (Step-by-step)
+
+1. User enters a password
+2. Password is converted into a **hash** using a hashing algorithm
+3. The **hashed value** is stored in the database
+4. During login, the entered password is hashed again and **compared with the stored hash**
+
+✔ If hashes match → login successful
+❌ If not → access denied
+
+---
+
+## 🔑 What is Hashing?
+
+**Hashing** is a one-way process:
+for every input there is a fixed output.
+they are one way functions, we cant get input from output.
+for a different input , there is a different output but of same length
+small changes in input should bring large changes in output.
+
+- Original password **cannot be retrieved**
+- Even the admin **cannot see the real password**
+
+---
+
+## 🧂 What is Salting?
+
+A **salt** is a random value added to the password before hashing to prevent attacks.
+password salting is a technique to protect passwords stored in a database by adding a 32 or more characters and then hashing them
+
+📌 This makes even same passwords produce **different hashes**.
+
+---
+
+## 🛠 Common hashing algorithms
+
+- bcrypt (most commonly used)
+- SHA-256 (with salt)//algo used
+- Argon2
+
+---
+
+## ✍️ One-line Exam / Viva Answer
+
+> **Passwords are stored in the database as hashed values using secure hashing algorithms instead of plain text to ensure security.**
+
+---
+
+## 🧠 Very easy memory trick
+
+> **Passwords are never saved — only their hashes are saved.**
+
+######################################passport-getting started
+Alright 👍 here’s **Passport.js – Getting Started** explained **briefly and clearly**, perfect for **project + viva**.
+
+---
+
+## 🔐 What is Passport.js?
+
+**Passport.js** is an **authentication middleware for Node.js**.
+It helps you implement **login, signup, and session-based authentication** easily.
+
+---
+
+## 🚀 Passport.js – Getting Started (Basic Steps)
+
+### 1️⃣ Install required packages
+
+npm install passport-local-mongoose
+
+## 🧠 What Passport does for you
+
+- Password hashing
+- Login verification
+- Session management
+- User authentication
+
+---
+
+## ✍️ One-line Viva Answer
+
+> **Passport.js is an authentication middleware for Node.js used to implement secure login and session-based authentication.**
+
+### 🔹 `passport.initialize()`
+
+> Initializes Passport in the Express application so it can handle authentication requests.
+
+📌 Without this, Passport **will not work**.
+
+### 🔹 `passport.session()`
+
+> Enables Passport to use **sessions** to remember logged-in users across multiple requests.
+
+📌 This keeps the user **logged in** after authentication.
+
+### 🔹 `passport.use(new LocalStrategy(User.authenticate()))`
+
+> Defines the **local authentication strategy** using username and password, and tells Passport how to verify user credentials using the User model.
+
+📌 It checks whether the **entered username and password are correct**.
+
+## 🧠 One-line combined explanation (excellent for viva)
+
+> `passport.initialize()` starts Passport, `passport.session()` manages login sessions, and `passport.use()` defines how users are authenticated using a local strategy.
+
+## 🔁 In your project (WanderBNB)
+
+- **Users & Hosts** login using Passport
+- Authentication → login check
+- Authorization → role-based access (user / host)
+
+passport.serializeUser(User.serializeUser());
+
+Stores the user’s ID in the session after successful login.
+
+📌 This decides what data is saved in the session (not the full user).
+
+🔹 passport.deserializeUser(User.deserializeUser());
+
+Retrieves the full user details from the database using the stored user ID on every request.
+
+📌 This makes req.user available.
+
+🧠 Simple flow (easy to remember)
+
+User logs in
+serializeUser → saves user ID in session
+On next request
+deserializeUser → fetches user from DB
+
+✍️ One-line Viva Answer
+
+serializeUser saves the user ID in the session, and deserializeUser retrieves the user details from the database for each request.
