@@ -1,10 +1,6 @@
 
 # 🧾 1. TECHNICAL SYNOPSIS (1–2 Pages)
 
-👉 You can copy this and paste into Word / PDF
-
----
-
 ## **Title:**
 
 **Wanderbnb – Digital Property Listing & Booking Platform**
