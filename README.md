@@ -1,8 +1,3 @@
-Great 👏 you’re at the final stage now — let’s make this **simple, clean, and submission-ready**.
-
-I’ll give you exactly what you need for all 3 deliverables ✅
-
----
 
 # 🧾 1. TECHNICAL SYNOPSIS (1–2 Pages)
 
